@@ -1,0 +1,137 @@
+# Data Files
+training_data_file: bike-sharing-dataset.csv
+# test_data_file: test.csv
+
+# Variables
+# The variable we are attempting to predict (Survival)
+target: cnt
+
+pipeline_name: bike_rental_model
+pipeline_save_file: bike_rental_model_output_v
+
+features:
+  - season
+  - year
+  - month
+  - hr
+  - holiday
+  - weekday
+  - workingday
+  - weathersit
+  - temp
+  - atemp
+  - hum
+  - windspeed
+  - dteday
+
+# features:      # final features to be use
+#   - month
+#   - year
+#   - season 
+#   - hr 
+#   - holiday
+#   - weekday  # generated  by  Sibsp + Parch +1 <--Before pipeline alongwith loading the data
+#   - workingday   # generated cabin              <--Before pipeline alongwith loading the data
+#   - weathersit       # generated from name          <--Before pipeline alongwith loading the data
+#   - temp
+#   - atemp
+#   - hum 
+#   - windspeed 
+#   # generated cabin              <--Before pipeline alongwith loading the data
+
+unused_fields:  # Features to drop before pipeline
+  - dteday
+  - casual
+  - registered
+
+# Features inside processing pipeline
+
+weekday_var: weekday  
+  
+weathersit_var: weathersit
+
+season_var: season
+hr_var: hr
+holiday_var: holiday
+workingday_var: workingday
+
+numeric_features:
+  - temp
+  - atemp
+  - hum
+  - windspeed
+categorical_features:
+  - season
+  - yr
+  - mnth
+  - holiday
+  - weekday
+  - workingday
+  - weathersit
+
+  
+# set train/test split
+test_size: 0.20
+
+# to set the random seed
+random_state: 42
+# alogrithm parameters
+n_estimators: 200
+max_depth: 5
+max_features: 3
+
+
+weekday_mapping:
+  Sun: 0
+  Mon: 1
+  Tue: 2
+  Wed: 3
+  Thu: 4
+  Fri: 5
+  Sat: 6
+
+workingday_mapping:
+  No: 0
+  Yes: 1
+
+weathersit_mapping:
+  Clear: 1
+  Heavy Rain: 2
+  Light Rain: 3
+  Mist: 4
+
+season_mapping:
+  spring: 1
+  summer: 2
+  fall: 3
+  winter: 4
+
+hr_mapping:
+  10am: 10
+  11am: 11  
+  12pm: 12
+  1pm: 13
+  2pm: 14
+  3pm: 15
+  4pm: 16
+  5pm: 17
+  6pm: 18
+  7pm: 19
+  8pm: 20
+  9pm: 21
+  10pm: 22
+  11pm: 23
+  12am: 0
+  1am: 1
+  2am: 2
+  3am: 3
+  4am: 4
+  5am: 5
+  6am: 6
+  7am: 7
+  8am: 8
+  9am: 9
+
+holiday_mappings:
+  No: 0
+  Yes: 1    
