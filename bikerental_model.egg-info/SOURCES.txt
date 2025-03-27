@@ -1,3 +1,4 @@
+LICENSE
 MANIFEST.in
 README.md
 pyproject.toml
@@ -23,7 +24,6 @@ bikerental_model/processing/data_manager.py
 bikerental_model/processing/features.py
 bikerental_model/processing/validation.py
 bikerental_model/trained_models/__init__.py
-bikerental_model/trained_models/bike_rental_model_output_v0.0.1.pkl
 requirements/requirements.txt
 requirements/test_requirements.txt
 tests/test_features.py

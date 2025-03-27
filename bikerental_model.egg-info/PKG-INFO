@@ -17,6 +17,7 @@ Classifier: Programming Language :: Python :: Implementation :: CPython
 Classifier: Programming Language :: Python :: Implementation :: PyPy
 Requires-Python: >=3.7.0
 Description-Content-Type: text/markdown
+License-File: LICENSE
 Requires-Dist: joblib==1.4.2
 Requires-Dist: numpy==2.2.2
 Requires-Dist: pandas==2.2.3
@@ -30,6 +31,7 @@ Dynamic: classifier
 Dynamic: description
 Dynamic: description-content-type
 Dynamic: license
+Dynamic: license-file
 Dynamic: requires-dist
 Dynamic: requires-python
 Dynamic: summary
