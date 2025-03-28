@@ -1,10 +1,12 @@
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
+
 from bikerental_model.config.core import config
 from bikerental_model.processing.features import WeekdayImputer
 from bikerental_model.processing.features import WeathersitImputer
 from bikerental_model.processing.features import Mapper, OutlierHandler, WeekdayOneHotEncoder
-
+from bikerental_model.processing.features import Mapper
 
 bikerental_pipe=Pipeline([
     
