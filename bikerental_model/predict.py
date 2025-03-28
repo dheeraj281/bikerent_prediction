@@ -1,37 +1,30 @@
+# load the pipeline, get a dataframe, validate, run the prediction.
 import pandas as pd
+import numpy as np
+from pathlib import Path
+from typing import Union
 from bikerental_model.config.core import config
 from bikerental_model.processing.data_manager import load_pipeline
+from bikerental_model.processing.validation import validate_inputs
+from bikerental_model import __version__ as _version
 
-# Load the trained pipeline
-bikerental_pipe = load_pipeline(file_name="bike_rental_model_output_v0.0.1.pkl")
+pipeline_file_name = f"{config.app_config_.pipeline_save_file}{_version}.pkl"
+bikerental_pipe = load_pipeline(file_name = pipeline_file_name)
 
-# Create a sample row with realistic values
-sample_data = pd.DataFrame({
-    "season": ["winter"],
-    "dteday":["2012-11-05"],
-    "hr": ["6am"],
-    "holiday": ["No"],
-    "weekday": ["Sun"],
-    "workingday": ["Yes"],
-    "weathersit": ["Mist"],
-    "temp": [6.10],
-    "atemp": [3.0014],
-    "hum": [49.0],
-    "windspeed": [19.0012],
-    "casual": [4],
-    "registered": [135],
-    "year": [2012],
-    "month": [11]
-})
+def make_prediction(*, input_data: Union[pd.DataFrame, dict]) -> dict:
+    """Make a prediction using a saved model """
+    validated_data, errors = validate_inputs(input_df = pd.DataFrame(input_data))   
+    # validated_data = validated_data[config.model_config_.features]
+    validated_data = validated_data.reindex(columns = config.model_config_.features)  
+    results = {"predictions": None, "version": _version, "errors": errors}    
+    if not errors:
+        predictions = bikerental_pipe.predict(validated_data)
+        results = {"predictions": np.floor(predictions), "version": _version, "errors": errors}
+    return results
 
-# Ensure columns match training data
-features = config.model_config_.features
-print("Expected Features:", features)
-print("Sample Data Columns:", sample_data.columns)
-sample_data = sample_data[features]  # Keep only relevant columns
-print(sample_data)
-# 
-# Predict with the pipeline
-prediction = bikerental_pipe.predict(sample_data)
+if __name__ == "__main__":
 
-print(f"Predicted bike rentals: {prediction[0]}")
+    data_in = {'dteday': ['2012-11-6'], 'season': ['winter'], 'hr': ['6pm'], 'holiday': ['No'], 'weekday': ['Tue'],
+               'workingday': ['Yes'], 'weathersit': ['Clear'], 'temp': [16], 'atemp': [17.5], 'hum': [30], 'windspeed': [10]}
+
+    print(make_prediction(input_data = data_in))

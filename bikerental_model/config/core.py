@@ -1,3 +1,4 @@
+# Path setup, and access the config.yml file, datasets folder & trained models
 from pathlib import Path
 from typing import Dict, List
 from pydantic import BaseModel
