@@ -57,6 +57,54 @@ make train
 
 This will execute the training pipeline and save the trained model under `bikerental_model/trained_models/`.
 
+## 🏗️ **Building the Package**
+To build the package, use:
+
+```sh
+make build
+```
+
+This command will:  
+- Build the Python package using `python -m build`  
+- Verify if the `.whl` file is generated and copy it to the `bike_sharing_api/` folder  
+
+Ensure you have Python and `pip` installed before running this command.  
+
+---
+
+## 🚀 **Running the Application**
+To start the Bike Sharing API, run:
+
+```sh
+make run-app
+```
+
+This command will:  
+- Start the application on http://0.0.0.0:8001/ 
+
+Ensure the virtual environment (`venv`) is set up before running this command.  
+
+---
+
+## 🐳 **Deploying with Docker**
+To build and run the application inside a Docker container, use:
+
+```sh
+make docker-deploy
+```
+
+This command will:  
+- Check if Docker is running  
+- Build a Docker image using the `Dockerfile` inside `bike_sharing_api/`  
+- Run the container with the built image
+  
+Ensure the `.whl` file is generated and copy it to the `bike_sharing_api/` folder 
+Ensure Docker is installed and running before executing this command.  
+
+---
+
+
+
 ## 💡 Additional Information
 - Ensure Python 3.x is installed before running `make setup`.
 - If you encounter any issues, try running commands inside the virtual environment manually.
