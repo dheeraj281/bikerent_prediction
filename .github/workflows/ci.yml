@@ -1,4 +1,4 @@
-name: Model Training and API Deployment
+name: CI Pipeline
 
 on:
   push:
