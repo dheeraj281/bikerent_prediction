@@ -1,7 +1,7 @@
 # Bike Rental Prediction 
 
 ## 🚀 Project Overview
-# Bike Rental Prediction is a machine learning project that predicts bike rental demand based on various input features. The project includes model training, evaluation, and deployment-ready pipelines integrated with Amazon EC2.
+### Bike Rental Prediction is a machine learning project that predicts bike rental demand based on various input features. The project includes model training, evaluation, and deployment-ready pipelines integrated with Amazon EC2.
 
 ## 📂 Project Structure
 ```
